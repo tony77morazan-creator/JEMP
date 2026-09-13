@@ -39,6 +39,9 @@ nav a:hover,.dropdown-toggle:hover{transform:scale(1.12);letter-spacing:.3px}
 .hero-content,.dots{position:relative;z-index:1}
 @keyframes heroMove{from{transform:scale(1)}to{transform:scale(1.045)}}
 @media(max-width:800px){@keyframes heroMove{from{transform:scale(1)}to{transform:scale(1.02)}}}
+</style><style>
+.nav-parent{display:flex;align-items:center;gap:2px}.arrow-btn{background:none;border:0;color:#fff;font:inherit;font-size:13px;padding:5px 3px;cursor:pointer}.dropdown-menu{top:100%}
+@media(max-width:800px){.dropdown-menu{display:none}.dropdown.open .dropdown-menu{display:block}.nav-parent{justify-content:space-between}.arrow-btn{padding:8px 10px;font-size:16px}.dropdown-toggle{display:inline-block}}
 </style></head>
 <body>
 <header>
@@ -48,17 +51,13 @@ nav a:hover,.dropdown-toggle:hover{transform:scale(1.12);letter-spacing:.3px}
   </a>
   <nav>
 <a href="#inicio">Inicio</a>
-<div class="dropdown">
-<a class="dropdown-toggle" href="nosotros.html" onclick="toggleDropdown(event)">Nosotros</a>
-<div class="dropdown-menu">
+<div class="dropdown"><div class="nav-parent"><a class="dropdown-toggle" href="nosotros.html">Nosotros</a><button class="arrow-btn" type="button" aria-label="Abrir menú Nosotros" onclick="toggleDropdown(event)">▾</button></div><div class="dropdown-menu">
 <a href="nosotros.html#quienes-somos">Quiénes somos</a>
 <a href="nosotros.html#vision">Visión</a>
 <a href="nosotros.html#mision">Misión</a>
 <a href="nosotros.html#nuestro-ministerio">Nuestro ministerio</a>
 </div></div>
-<div class="dropdown">
-<a class="dropdown-toggle" href="#servicios" onclick="toggleDropdown(event)">Servicios</a>
-<div class="dropdown-menu">
+<div class="dropdown"><div class="nav-parent"><a class="dropdown-toggle" href="#servicios">Servicios</a><button class="arrow-btn" type="button" aria-label="Abrir menú Servicios" onclick="toggleDropdown(event)">▾</button></div><div class="dropdown-menu">
 <a href="caballeros.html">Ministerio de Caballeros</a>
 <a href="damas.html">Ministerio de Damas</a>
 <a href="jovenes.html">Ministerio de Jóvenes</a>
@@ -134,18 +133,5 @@ nav a:hover,.dropdown-toggle:hover{transform:scale(1.12);letter-spacing:.3px}
 
 
 <footer>“El Señor es mi pastor; nada me faltará.” — Salmo 23:1</footer>
-<script>
-function toggleServices(e){
-  if(window.innerWidth<=800){e.preventDefault();e.currentTarget.parentElement.classList.toggle('open');}
-}
-</script>
-<script>
-function toggleDropdown(e){
-  if(window.innerWidth<=800){
-    e.preventDefault();
-    e.currentTarget.parentElement.classList.toggle('open');
-  }
-}
-</script>
-</body>
+<script>function toggleDropdown(e){e.stopPropagation();e.preventDefault();e.currentTarget.closest('.dropdown').classList.toggle('open');}</script></body>
 </html>
