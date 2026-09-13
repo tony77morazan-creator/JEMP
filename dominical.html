@@ -32,4 +32,39 @@ main h1{color:#f2d28a!important}
 <main><h1>Ministerio Dominical</h1><p class="intro">Acompañar la enseñanza bíblica y el crecimiento espiritual de niños y congregación durante las reuniones dominicales.</p><h2>Fotos del ministerio</h2>
 <div class="gallery youth-gallery"><figure class="photo-real" onclick="openLightbox(0)"><img src="dominical_1.jpg" alt="Ministerio Dominical - foto 1"><figcaption>Ministerio Dominical</figcaption></figure><figure class="photo-real" onclick="openLightbox(1)"><img src="dominical_2.jpg" alt="Ministerio Dominical - foto 2"><figcaption>Ministerio Dominical</figcaption></figure><figure class="photo-real" onclick="openLightbox(2)"><img src="dominical_3.jpg" alt="Ministerio Dominical - foto 3"><figcaption>Ministerio Dominical</figcaption></figure><figure class="photo-real" onclick="openLightbox(3)"><img src="dominical_4.jpg" alt="Ministerio Dominical - foto 4"><figcaption>Ministerio Dominical</figcaption></figure><figure class="photo-real" onclick="openLightbox(4)"><img src="dominical_5.jpg" alt="Ministerio Dominical - foto 5"><figcaption>Ministerio Dominical</figcaption></figure><figure class="photo-real" onclick="openLightbox(5)"><img src="dominical_6.jpg" alt="Ministerio Dominical - foto 6"><figcaption>Ministerio Dominical</figcaption></figure><figure class="photo-real" onclick="openLightbox(6)"><img src="dominical_7.jpg" alt="Ministerio Dominical - foto 7"><figcaption>Ministerio Dominical</figcaption></figure></div></main><div class="lightbox" id="lightbox" role="dialog" aria-modal="true" onclick="closeIfBackdrop(event)"><button class="lb-close" onclick="closeLightbox(event)">×</button><button class="lb-prev" onclick="prevPhoto(event)">‹</button><img id="lbImage" src="" alt=""><button class="lb-next" onclick="nextPhoto(event)">›</button><div class="lb-counter" id="lbCounter"></div></div>
 <script>const galleryImages=[{src:'dominical_1.jpg',alt:'Ministerio Dominical - foto 1'},{src:'dominical_2.jpg',alt:'Ministerio Dominical - foto 2'},{src:'dominical_3.jpg',alt:'Ministerio Dominical - foto 3'},{src:'dominical_4.jpg',alt:'Ministerio Dominical - foto 4'},{src:'dominical_5.jpg',alt:'Ministerio Dominical - foto 5'},{src:'dominical_6.jpg',alt:'Ministerio Dominical - foto 6'},{src:'dominical_7.jpg',alt:'Ministerio Dominical - foto 7'}];let currentPhoto=0;function openLightbox(i){currentPhoto=i;document.getElementById('lightbox').classList.add('open');showPhoto();document.body.style.overflow='hidden'}function showPhoto(){const x=galleryImages[currentPhoto];document.getElementById('lbImage').src=x.src;document.getElementById('lbImage').alt=x.alt;document.getElementById('lbCounter').textContent=(currentPhoto+1)+' / '+galleryImages.length}function closeLightbox(e){if(e)e.stopPropagation();document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}function closeIfBackdrop(e){if(e.target.id==='lightbox')closeLightbox()}function prevPhoto(e){e.stopPropagation();currentPhoto=(currentPhoto-1+galleryImages.length)%galleryImages.length;showPhoto()}function nextPhoto(e){e.stopPropagation();currentPhoto=(currentPhoto+1)%galleryImages.length;showPhoto()}document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')prevPhoto(e);if(e.key==='ArrowRight')nextPhoto(e)})</script>
+
+<style>
+/* La navegación se oculta al bajar y reaparece suavemente al subir */
+.site-header{
+  position:fixed !important;
+  top:0;left:0;right:0;
+  z-index:9999;
+  transition:transform .35s ease, opacity .35s ease;
+}
+.site-header.nav-hidden{
+  transform:translateY(-110%);
+  opacity:0;
+}
+body{padding-top:0}
+</style>
+<script>
+(function(){
+  let lastY=window.scrollY;
+  const header=document.querySelector('header');
+  if(!header)return;
+  header.classList.add('site-header');
+  window.addEventListener('scroll',function(){
+    const y=window.scrollY;
+    if(y < 40){
+      header.classList.remove('nav-hidden');
+    }else if(y > lastY + 6){
+      header.classList.add('nav-hidden');   // bajando
+    }else if(y < lastY - 6){
+      header.classList.remove('nav-hidden'); // subiendo
+    }
+    lastY=y;
+  },{passive:true});
+})();
+</script>
+
 </body></html>

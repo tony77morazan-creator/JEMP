@@ -25,4 +25,39 @@ main h1{color:#f2d28a!important}
 <header><a class="brand" href="index.html"><img src="logo.jpg" alt="Logo"><strong>Jesús es mi Pastor</strong></a><a class="back" href="index.html">← Volver</a></header>
 <main><h1>Ministerio de Damas</h1><p class="intro">Edificar a las mujeres mediante la Palabra, oración, comunión y servicio cristiano.</p><h2>Fotos del ministerio</h2>
 <div class="gallery"><div class="photo">Foto 1<br><br>Colocaremos aquí una foto.</div><div class="photo">Foto 2<br><br>Colocaremos aquí una foto.</div><div class="photo">Foto 3<br><br>Colocaremos aquí una foto.</div></div>
-</main></body></html>
+</main>
+<style>
+/* La navegación se oculta al bajar y reaparece suavemente al subir */
+.site-header{
+  position:fixed !important;
+  top:0;left:0;right:0;
+  z-index:9999;
+  transition:transform .35s ease, opacity .35s ease;
+}
+.site-header.nav-hidden{
+  transform:translateY(-110%);
+  opacity:0;
+}
+body{padding-top:0}
+</style>
+<script>
+(function(){
+  let lastY=window.scrollY;
+  const header=document.querySelector('header');
+  if(!header)return;
+  header.classList.add('site-header');
+  window.addEventListener('scroll',function(){
+    const y=window.scrollY;
+    if(y < 40){
+      header.classList.remove('nav-hidden');
+    }else if(y > lastY + 6){
+      header.classList.add('nav-hidden');   // bajando
+    }else if(y < lastY - 6){
+      header.classList.remove('nav-hidden'); // subiendo
+    }
+    lastY=y;
+  },{passive:true});
+})();
+</script>
+
+</body></html>

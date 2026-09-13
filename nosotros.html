@@ -33,4 +33,39 @@ main h1{color:#f2d28a!important}
 <div class="ministry"><h3>Alabanza</h3><p>Música y adoración congregacional.</p></div>
 <div class="ministry"><h3>Dominical</h3><p>Enseñanza y crecimiento bíblico.</p></div>
 </div></section>
-</main></body></html>
+</main>
+<style>
+/* La navegación se oculta al bajar y reaparece suavemente al subir */
+.site-header{
+  position:fixed !important;
+  top:0;left:0;right:0;
+  z-index:9999;
+  transition:transform .35s ease, opacity .35s ease;
+}
+.site-header.nav-hidden{
+  transform:translateY(-110%);
+  opacity:0;
+}
+body{padding-top:0}
+</style>
+<script>
+(function(){
+  let lastY=window.scrollY;
+  const header=document.querySelector('header');
+  if(!header)return;
+  header.classList.add('site-header');
+  window.addEventListener('scroll',function(){
+    const y=window.scrollY;
+    if(y < 40){
+      header.classList.remove('nav-hidden');
+    }else if(y > lastY + 6){
+      header.classList.add('nav-hidden');   // bajando
+    }else if(y < lastY - 6){
+      header.classList.remove('nav-hidden'); // subiendo
+    }
+    lastY=y;
+  },{passive:true});
+})();
+</script>
+
+</body></html>
