@@ -31,7 +31,15 @@
  .hero-image{transition:none}
 }
 </style>
-</head>
+<style>
+nav a,.dropdown-toggle{transition:transform .22s ease,font-size .22s ease,letter-spacing .22s ease}
+nav a:hover,.dropdown-toggle:hover{transform:scale(1.12);letter-spacing:.3px}
+.hero{overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:inherit;animation:heroMove 16s ease-in-out infinite alternate;z-index:0}
+.hero-content,.dots{position:relative;z-index:1}
+@keyframes heroMove{from{transform:scale(1)}to{transform:scale(1.045)}}
+@media(max-width:800px){@keyframes heroMove{from{transform:scale(1)}to{transform:scale(1.02)}}}
+</style></head>
 <body>
 <header>
   <a class="brand" href="#inicio" style="color:white;text-decoration:none">
@@ -41,31 +49,30 @@
   <nav>
 <a href="#inicio">Inicio</a>
 <div class="dropdown">
-  <a class="dropdown-toggle" href="#nosotros" onclick="toggleDropdown(event)">Nosotros</a>
-  <div class="dropdown-menu">
-    <a href="#quienes-somos">Quiénes somos</a>
-    <a href="#vision">Visión</a>
-    <a href="#mision">Misión</a>
-  </div>
-</div>
+<a class="dropdown-toggle" href="nosotros.html" onclick="toggleDropdown(event)">Nosotros</a>
+<div class="dropdown-menu">
+<a href="nosotros.html#quienes-somos">Quiénes somos</a>
+<a href="nosotros.html#vision">Visión</a>
+<a href="nosotros.html#mision">Misión</a>
+<a href="nosotros.html#nuestro-ministerio">Nuestro ministerio</a>
+</div></div>
 <div class="dropdown">
-  <a class="dropdown-toggle" href="#servicios" onclick="toggleDropdown(event)">Servicios</a>
-  <div class="dropdown-menu">
-    <a href="caballeros.html">Ministerio de Caballeros</a>
-    <a href="damas.html">Ministerio de Damas</a>
-    <a href="jovenes.html">Ministerio de Jóvenes</a>
-    <a href="danza.html">Ministerio de Danza</a>
-    <a href="alabanza.html">Ministerio de Alabanza</a>
-    <a href="dominical.html">Ministerio Dominical</a>
-  </div>
-</div>
-<a href="#horarios">Horarios</a>
-<a href="#telefonos">Contacto</a>
+<a class="dropdown-toggle" href="#servicios" onclick="toggleDropdown(event)">Servicios</a>
+<div class="dropdown-menu">
+<a href="caballeros.html">Ministerio de Caballeros</a>
+<a href="damas.html">Ministerio de Damas</a>
+<a href="jovenes.html">Ministerio de Jóvenes</a>
+<a href="danza.html">Ministerio de Danza</a>
+<a href="alabanza.html">Ministerio de Alabanza</a>
+<a href="dominical.html">Ministerio Dominical</a>
+</div></div>
+<a href="#horarios-info">Horarios</a>
+<a href="#contacto-info">Contacto</a>
 </nav>
   <div class="menu">☰</div>
 </header>
 
-<section class="hero" id="inicio"><div class="hero-content"><h1>Si se humillaré<br>mi pueblo</h1><p>2 CRÓNICAS 7:14<br><span style="letter-spacing:4px">TEGUCIGALPA, HONDURAS</span></p><a class="cta" href="#nosotros">▶&nbsp;&nbsp; Mirar ahora</a></div><div class="dots"><span></span><span></span><span></span></div></section>
+<section class="hero" id="inicio"><div class="hero-content"><h1>Si se humillaré<br>mi pueblo</h1><p>2 CRÓNICAS 7:14<br><span style="letter-spacing:4px">TEGUCIGALPA, HONDURAS</span></p><a class="cta" href="nosotros.html">▶&nbsp;&nbsp; Mirar ahora</a></div><div class="dots"><span></span><span></span><span></span></div></section>
 
 
 <section id="vision" class="info-section">
@@ -80,13 +87,13 @@
   <h2>Bienvenidos</h2>
   <p>Somos una iglesia que busca exaltar a Jesucristo, enseñar la Palabra de Dios y servir a las familias con amor, fe y esperanza.</p>
   <div class="cards">
-    <div class="card"><div class="icon">👥</div><h3>Nosotros</h3><p>Conoce quiénes somos, nuestra misión y nuestra visión.</p><a class="card-btn" href="#quienes-somos">Quiénes somos</a></div>
+    <div class="card"><div class="icon">👥</div><h3>Nosotros</h3><p>Conoce quiénes somos, nuestra misión y nuestra visión.</p><a class="card-btn" href="nosotros.html">Conócenos</a></div>
     <div class="card"><div class="icon">📖</div><h3>Servicios</h3><p>Conoce nuestros ministerios de caballeros, damas y jóvenes.</p><a class="card-btn" href="#servicios">Ver ministerios</a></div>
     <div class="card" id="horarios"><div class="icon">▣</div><h3>Horarios</h3><p>Nuestros cultos y actividades.</p><a class="card-btn" href="#horarios-info">Ver horarios</a></div>
-    <div class="card" id="contacto"><div class="icon">📍</div><h3>Contacto</h3><p>Estamos para servirte.</p><a class="card-btn" href="#contacto-info">Contáctanos</a></div>
+    <div class="card" id="contacto-card"><div class="icon">📍</div><h3>Contacto</h3><p>Estamos para servirte.</p><a class="card-btn" href="#contacto-info">Contáctanos</a></div>
   </div>
 
-  <div id="quienes-somos" class="info" style="margin-top:45px">
+  <div id="quienes-somos-resumen" class="info" style="margin-top:45px">
     <h2>Quiénes somos</h2>
     <p>El Ministerio Centro Evangélico “Jesús es mi Pastor” es una iglesia dedicada a anunciar el evangelio de Jesucristo, formar discípulos y fortalecer a las familias mediante la Palabra de Dios, la oración, la comunión y el servicio.</p>
     <p style="margin-top:12px"><strong>Nuestra misión:</strong> llevar a las personas a conocer a Cristo, crecer en la fe y vivir una vida entregada a Dios.</p>
@@ -97,11 +104,14 @@
     <h2>Nuestros ministerios</h2>
     <p>Conoce cada uno de nuestros ministerios y su propósito dentro de la iglesia.</p>
     <div class="service-details">
-      <div class="detail-card" id="caballeros"><h3>Ministerio de Caballeros</h3><p>Un espacio para fortalecer a los hombres en su relación con Dios, promover el liderazgo espiritual, la responsabilidad familiar, la oración y el servicio cristiano.</p><a href="caballeros.html">Ver ministerio →</a></div>
-      <div class="detail-card" id="damas"><h3>Ministerio de Damas</h3><p>Un ministerio dedicado a edificar a las mujeres mediante la Palabra de Dios, la oración, la comunión y el apoyo mutuo, animándolas a servir y crecer en su fe.</p><a href="damas.html">Ver ministerio →</a></div>
-      <div class="detail-card" id="jovenes"><h3>Ministerio de Jóvenes</h3><p>Un espacio para que los jóvenes conozcan más a Cristo, desarrollen sus dones, fortalezcan su fe y aprendan a vivir los valores del evangelio en su vida diaria.</p><a href="jovenes.html">Ver ministerio →</a></div>
-    </div>
-  </div>
+<div class="detail-card"><h3>Ministerio de Caballeros</h3><p>Fortalecer a los hombres en su relación con Dios, liderazgo espiritual, familia, oración y servicio.</p><a href="caballeros.html">Ver ministerio →</a></div>
+<div class="detail-card"><h3>Ministerio de Damas</h3><p>Edificar a las mujeres mediante la Palabra, oración, comunión y servicio cristiano.</p><a href="damas.html">Ver ministerio →</a></div>
+<div class="detail-card"><h3>Ministerio de Jóvenes</h3><p>Ayudar a los jóvenes a conocer a Cristo, crecer en la fe, desarrollar sus dones y servir.</p><a href="jovenes.html">Ver ministerio →</a></div>
+<div class="detail-card"><h3>Ministerio de Danza</h3><p>Adorar a Dios mediante la danza, con reverencia, alegría y excelencia.</p><a href="danza.html">Ver ministerio →</a></div>
+<div class="detail-card"><h3>Ministerio de Alabanza</h3><p>Guiar a la congregación a adorar a Dios por medio de la música y el canto.</p><a href="alabanza.html">Ver ministerio →</a></div>
+<div class="detail-card"><h3>Ministerio Dominical</h3><p>Acompañar la enseñanza bíblica y el crecimiento espiritual durante las reuniones dominicales.</p><a href="dominical.html">Ver ministerio →</a></div>
+</div>
+</div>
 </section>
 <section class="info" id="horarios-info">
   <h2>Horarios de reunión</h2>
@@ -122,12 +132,6 @@
   <a class="cta" style="background:#173b29;border-color:#173b29" href="https://wa.me/50432652558?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20iglesia.">Escribir por WhatsApp</a>
 </section>
 
-
-<section id="telefonos" class="info-section">
-  <h2>Contacto</h2>
-  <p><strong>Teléfono / WhatsApp:</strong> <a class="contact-link" href="tel:+50432652558">3265-2558</a></p>
-  <p><a class="card-btn" href="https://wa.me/50432652558?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20iglesia.">Escribir por WhatsApp →</a></p>
-</section>
 
 <footer>“El Señor es mi pastor; nada me faltará.” — Salmo 23:1</footer>
 <script>
